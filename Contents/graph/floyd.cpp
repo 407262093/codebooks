@@ -1,49 +1,25 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define INF 0x3f3f3f3f
-const int MAXN = 10005;
-int fol[MAXN][MAXN];
+const LL INF = 1e18;
+const int MAXN = ;
 
-void init(int n){
-	for(int i = 1;i<=n;i++){
-		for(int j = 1;j<=n;j++){
-			fol[i][j] = INF;
-		}
-	}
+int n;
+LL G[MAXN][MAXN];
+
+void init() {
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      G[i][j] = INF;
+    }
+    G[i][i] = 0;
+  }
 }
-
-int main(int argc, char const *argv[])
-{
-	int n,m,f,t,w;
-	while(cin>>n>>m){//n表示有幾個點 m表示有幾條線
-		if(n<=0) break;
-		init(n);
-		for(int i = 0;i<m;i++){
-			cin>>f>>t>>w;
-			fol[f][t] = w;
-			fol[t][f] = w;
-		}
-		for(int i = 1;i <= n;i++){
-			for(int j = 1;j <= n;j++){
-				if(i == j) continue;
-				for(int k = 1;k <= n;k++){
-					if(k == j){
-						fol[j][k] = 0;
-						continue;
-					} 
-					if(i == k) continue;
-					if(fol[j][k] > fol[i][k] + fol[j][i]){
-						fol[j][k] = fol[i][k] + fol[j][i];
-					}
-				}
-			}
-		}
-		for(int i = 1;i<=n;i++){
-			for(int j = 1;j<=n;j++){
-				cout<<fol[i][j]<<" ";
-			}
-			cout<<endl;
-		}
-	}
-	return 0;
+void floyd() {
+  for (int k = 0; k < n; k++) {
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (G[i][k] != INF && G[k][j] != INF) {
+          G[i][j] = min(G[i][j], G[i][k] + G[k][j]);
+        }
+      }
+    }
+  }
 }
