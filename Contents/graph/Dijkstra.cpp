@@ -1,3 +1,4 @@
+#include <./basic/Template.h>
 const long long int INF = 1e18;
 const int MAXN = 1000000;
 struct Edge {

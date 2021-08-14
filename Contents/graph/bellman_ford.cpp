@@ -1,3 +1,4 @@
+#include <./basic/Template.h>
 bool bellman(int src)
 {
     // Nodes are indexed from 1

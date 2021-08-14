@@ -1,3 +1,4 @@
+#include <./basic/Template.h>
 const int INF = 1e9;
 const int MAXN = ;
 
