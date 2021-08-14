@@ -6,6 +6,7 @@
 - Disjoint Set
 - Segment Tree
 - DFS
+- BFS
 
 ## Dp
 - LCS
